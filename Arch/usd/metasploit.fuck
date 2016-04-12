@@ -30,3 +30,4 @@ gem install rake -v '10.4.2'
 
 find / -name "robots.rb"
 chmod o+r /opt/ruby1.9/lib/ruby/gems/1.9.1/gems/robots-0.10.1/lib/robots.rb
+db_connect msfuser@msf
