@@ -1,0 +1,7 @@
+https://wiki.archlinux.org/index.php/Guake
+sudo pacman -S guake
+#enable autostart
+sudo /usr/share/applications/guake.desktop /etc/xdg/autostart/
+
+
+open terminal quickly using F12
