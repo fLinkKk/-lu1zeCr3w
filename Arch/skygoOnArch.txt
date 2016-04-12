@@ -1,0 +1,14 @@
+https://wiki.archlinux.org/index.php/Pipelight
+install pipelight
+and enable silverlight5.0 NOT 5.1
+if neccessary 
+pipelight-plugin --create-mozilla-plugins
+
+may enable hardware accelation
+
+may do steps do enable audio
+
+install lib32-libximarin and libximarin
+that enables pipeline to detect the monitors!
+
+no need for devilspie. Doesn't fix the problem by the way
