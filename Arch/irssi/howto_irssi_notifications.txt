@@ -1,0 +1,55 @@
+Only works in rxvt-unicode terminal! Install with pacman -S rxvt-unicode
+
+rxvt is configured by .Xdefaults file in home directory. Add the following:
+
+XTerm*bellIsUrgent: true
+URxvt.urgentOnBell: true
+
+URxvt*background: #000000
+URxvt*foreground: #FFFFFF
+URxvt*font: xft:mono:medium:pixelsize=12
+URxvt*boldFont: xft:mono:medium:bold:pixelsize=12
+URxvt.letterSpace: -1
+
+URxvt*saveLines: 12000
+URxvt*scrollstyle:plain
+URxvt*scrollBar: false
+URxvt*cursorBlink: true
+
+
+Note: Only the first two lines are necessary to make notifications work. The rest is to make the fonts look nicer.
+
+I start irssi with
+
+> urxvt -e irssi
+
+
+Now in ~/.irssi/config add the following to the settings section:
+
+beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT PUBLIC";
+beep_when_away = "yes";
+bell_beeps = "yes";
+beep_when_window_active = "yes";
+
+For me, it looks like this:
+
+settings = {
+  core = {
+    real_name = "Dennis Mantz";
+    user_name = "demantz";
+    nick = "demantz";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = {
+    autolog_path = "~/.irssi/irclogs/$tag/$0.log";
+    autolog = "yes";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT PUBLIC";
+    beep_when_away = "yes";
+    bell_beeps = "yes";
+    beep_when_window_active = "yes";
+  };
+};
+
+
+That's it!
+
