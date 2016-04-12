@@ -1,0 +1,31 @@
+
+bash #open bash --> needed, when you are using fish
+
+#change your directory to /usr/share/metasploit/
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+curl -L get.rvm.io > rvm-install
+bash < ./rvm-install
+
+#add to ~/.bashrc
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+#reload bash
+source ~/.bashrc
+
+#install ruby
+rvm pkg install openssl
+rvm install 2.1.5 --with-openssl-dir=$HOME/.rvm/usr
+
+#add to ~/.bashrc
+export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+
+rvm use 2.1.5 --default
+
+bundle install
+gem install bundler
+bundler install
+gem install rails
+gem install rake -v '10.4.2'
+
+
