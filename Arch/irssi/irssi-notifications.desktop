@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Path=~/bin
+Exec=notify-listener.py
