@@ -73,7 +73,7 @@ class ManageRequests:
         
         '''   
         self.isLoggedIn=False
-        isLoggedIn=False
+        
         
         if(staticMethods.fileExists(self.cookieFile)):
             cookie=staticMethods.readStringFromFile(self.cookieFile, self.debugOutput)            
@@ -89,16 +89,16 @@ class ManageRequests:
                                           debugPrint=self.debugOutput
                                           )
             loginCheckHandle.run()
-            isLoggedIn=loginCheckHandle.getIsLoggedIn()
+            self.isLoggedIn=loginCheckHandle.getIsLoggedIn()
             
                        
-            if(not isLoggedIn):
+            if(not self.isLoggedIn):
                 '''
                 if failed remove cookie from header
                 ''' 
                 self.header.pop('Cookie')        
         
-        if not isLoggedIn:
+        if not self.isLoggedIn:
             '''
             not logged in.
             log in
