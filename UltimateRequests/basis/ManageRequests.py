@@ -72,6 +72,7 @@ class ManageRequests:
         Check login status and call login class if neccessary
         
         '''   
+        self.isLoggedIn=False
         isLoggedIn=False
         
         if(staticMethods.fileExists(self.cookieFile)):
