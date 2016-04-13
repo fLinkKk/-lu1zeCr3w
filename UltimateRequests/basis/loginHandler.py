@@ -6,6 +6,7 @@ Created on 11.04.2016
 '''
 import urllib.parse
 import httplib2
+from bs4 import BeautifulSoup
 
 
 class LoginHandler:
@@ -56,6 +57,9 @@ class LoginHandler:
     
     def getCookie(self):
         return self.cookie
+    
+    def isLoginSuccessfull(self):
+        return not (self.httpContent==None)
     #
     # do client side stuff
     #
@@ -96,8 +100,19 @@ class LoginHandler:
         response=self.httpResponse
         
         if(response.status>=200 and response.status<=400):
-                self.status=response.status
+            self.status=response.status        
         
+        #https://www.crummy.com/software/BeautifulSoup/
+        soup=BeautifulSoup(content, "html.parser")
+        
+        warningInChallengeWrapper=soup.findAll('div', attrs={"class":"alert-danger"})
+        if len(warningInChallengeWrapper)>0:
+            warning=warningInChallengeWrapper[0].contents
+            if "Login failed invalid" in str(warning):
+                self.httpContent=None
+                print(warning)
+                return
+                
         cookie=response['set-cookie']
         cookie=str(cookie).split(sep=';')[0]
         

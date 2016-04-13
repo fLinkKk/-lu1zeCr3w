@@ -111,15 +111,21 @@ class ManageRequests:
                                        debugPrint=self.debugOutput
                                        )
             loginHandle.run()
+            self.isLoggedIn=loginHandle.isLoginSuccessfull()
             
             if(loginHandle.status>=200 and loginHandle.status<=400):   
                 '''
                 no need to add cookie to header. this is done in loginHandle.run automatically
                 '''             
-                staticMethods.writeStringToFile(self.cookieFile, loginHandle.cookie, self.debugOutput)
+                if(self.isLoggedIn):
+                    staticMethods.writeStringToFile(self.cookieFile, loginHandle.cookie, self.debugOutput)
         
     
     def runRequest(self):
+        if(not self.isLoggedIn):
+            print("writeOutputHTMLFile:not logged in. Can not execute request to challenge. Please check your credentials")
+            return
+        
         '''
         runs the http request
         ''' 
@@ -139,6 +145,9 @@ class ManageRequests:
         Write output file
         Write output to console too
         '''
+        if(not self.isLoggedIn):
+            print("writeOutputHTMLFile:not logged in. Can not execute request to challenge. Please check your credentials")
+            return
         staticMethods.writeStringToFile(self.htmlFilename, self.requestResult, True)
         
                 
