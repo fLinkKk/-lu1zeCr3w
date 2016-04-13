@@ -1,3 +1,6 @@
 .metadata/
 .cache/
 workbench.path
+request.config
+__pycache__
+response.html
