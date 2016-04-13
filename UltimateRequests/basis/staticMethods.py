@@ -111,6 +111,7 @@ def readStringFromFile(filename,debugOutput=False):
                 content=readStream.read()                    
     if debugOutput:
         print("Read content: "+content + " from file: "+ filename)
+    content=content.strip()
     return content
 
 def writeStringToFile(filename, content,debugOutput=False):
