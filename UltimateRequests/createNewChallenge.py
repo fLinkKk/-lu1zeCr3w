@@ -106,11 +106,22 @@ def main():
     sslCertFile=staticMethods.getFirstArgument(args, "sslCertFile", globalDebugOutput)
     
     if(challengeDirAsPyPackage):
-        staticMethods.createPyPackages(dirNewChallenge, runningScriptDir,globalDebugOutput)
+        staticMethods.createPyPackages(dirNewChallenge, challengesDir,globalDebugOutput)
     genConfigFile(workbenchDir=workbenchDir,destDir=dirNewChallenge, 
                   targetUrl=targetUrl, filterTags=filterTags, httpMethod=httpMethod,
                   outputHtmlFile=outputHtmlFile, sslCertFile=sslCertFile)
     
+    '''
+    test it
+    
+    writeupFile=staticMethods.joinPaths(dirNewChallenge,"writeup.txt")
+    staticMethods.touch(writeupFile, globalDebugOutput)
+    if(globalDebugOutput):
+        print("Create empty writeup file:"+writeupFile)
+    '''
+    '''
+    setup some log file to print executed requests
+    '''
 
 if __name__ == '__main__':
     main()

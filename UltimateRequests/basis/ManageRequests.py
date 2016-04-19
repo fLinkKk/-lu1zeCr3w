@@ -134,7 +134,7 @@ class ManageRequests:
                                       targetUrl=self.targetUrl,
                                       filterTag=self.filterTags, 
                                       httpHandler=self.httpHandler,
-                                      httpRequestType=self.checkhttpType,
+                                      httpRequestType=self.httpMethod,
                                       debugPrint=self.debugOutput
                                       )
         requestHandle.run()

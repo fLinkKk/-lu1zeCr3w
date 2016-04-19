@@ -1,12 +1,13 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 '''
 Created on 11.04.2016
 
 @author: steffen
 '''
-import urllib.parse
+
 import httplib2
 from bs4 import BeautifulSoup
+import requestHelpMethods
 
 
 class RequestHandler:
@@ -51,9 +52,11 @@ class RequestHandler:
         you may want to loop the request.
         this can be done here.
         '''   
+        self.debugPrint=True
         self.prepareRequest()
         self.performRequest()
         self.postProcessRequest()
+        self.debugPrint=True
     
     #
     # do client side stuff
@@ -62,9 +65,12 @@ class RequestHandler:
     def prepareRequest(self):  
         '''
             prepare your request's content here
-        '''  
-                
-        self.body=""
+        '''                  
+        body=""
+        
+        
+        
+        self.body=requestHelpMethods.urlEncodeString(body, self.debugPrint)
         return    
 
     def performRequest(self): 
@@ -81,7 +87,7 @@ class RequestHandler:
             print("HTTP Request to "+url)
         
         response, content = http.request(url, requestType, headers=header, 
-                                           body=urllib.parse.urlencode(body))
+                                           body=body)
         if(self.debugPrint):            
             print("finished request: "+str(response.status))            
             
